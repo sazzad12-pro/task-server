@@ -25,7 +25,8 @@ async function run() {
     });
 
     app.get("/user", async (req, res) => {
-      const query = {};
+      const email = req.query.email;
+      const query = { userEmail: email };
       const result = await userCollection.find(query).toArray();
       res.send(result);
     });
